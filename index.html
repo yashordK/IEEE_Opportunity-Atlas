@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opportunity Atlas — SUAS IEEE Student Branch</title>
+<meta name="description" content="Every IEEE grant, fund, competition, award and startup scheme open to SUAS IEEE Student Branch members, linked to official sources.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0b1626;--ink2:#3d4b63;--muted:#6b7890;--line:#e2e8f0;--bg:#f5f8fc;--card:#fff;
+  --blue:#00629b;--blue-d:#003a5d;--blue2:#e5f1f9;
+  --green:#047857;--green2:#d1fae5;--amber:#b45309;--amber2:#fef3c7;
+  --pink:#a3195b;--pink2:#fce7f3;--violet:#5b21b6;--violet2:#ede9fe;
+  --red:#b91c1c;--red2:#fee2e2;--sky:#075985;--sky2:#e0f2fe;
+  --r:18px;--shadow:0 1px 2px rgba(11,22,38,.04),0 8px 24px -14px rgba(11,22,38,.18);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;font-family:Inter,system-ui,-apple-system,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:var(--blue);text-decoration:none;font-weight:600}
+a:hover{text-decoration:underline}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.15;margin:0;letter-spacing:-.01em}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+.ext::after{content:"↗";font-size:.85em;margin-left:3px}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;overflow:hidden;color:#fff;
+  background:radial-gradient(1200px 500px at 85% -10%,rgba(56,189,248,.35),transparent 60%),
+             radial-gradient(800px 400px at -10% 110%,rgba(0,98,155,.6),transparent 60%),
+             linear-gradient(140deg,#001e33 0%,#003a5d 45%,#00629b 100%);
+  padding:56px 0 60px}
+.hero::before{content:"";position:absolute;inset:0;opacity:.08;
+  background-image:linear-gradient(rgba(255,255,255,.6) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.6) 1px,transparent 1px);
+  background-size:44px 44px;mask-image:linear-gradient(180deg,#000,transparent 85%)}
+.hero .wrap{position:relative}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:42px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.02em}
+.brand .logo{width:38px;height:38px;border-radius:10px;background:#fff;color:var(--blue);display:grid;place-items:center;font-family:Fraunces,serif;font-size:15px}
+.brand small{display:block;font-weight:500;color:#a9cbe2;font-size:12px;letter-spacing:.04em}
+.official{display:flex;gap:8px;flex-wrap:wrap}
+.official a{color:#e6f2fa;font-size:13px;font-weight:600;border:1px solid rgba(255,255,255,.25);padding:6px 11px;border-radius:99px}
+.official a:hover{background:rgba(255,255,255,.12);text-decoration:none}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:6px 12px;border-radius:99px;font-weight:700}
+.kicker i{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 4px rgba(74,222,128,.25)}
+.hero h1{font-size:clamp(38px,7vw,72px);font-weight:800;margin:18px 0 16px;max-width:14ch}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,#7dd3fc,#a5f3fc);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{font-size:clamp(17px,2.2vw,20px);max-width:60ch;color:#d3e7f4;margin:0}
+.byline{margin-top:22px;font-size:14px;color:#b7d4e8}
+.byline a{color:#fff}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:34px}
+.stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:16px 18px;backdrop-filter:blur(6px)}
+.stat b{display:block;font-family:Fraunces,serif;font-size:clamp(22px,3vw,30px);line-height:1.1}
+.stat span{font-size:13px;color:#c4dcec}
+@media(max-width:820px){.stats{grid-template-columns:repeat(2,1fr)}}
+
+/* ---------- NAV ---------- */
+nav.toc{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+nav.toc .wrap{display:flex;gap:2px;overflow-x:auto;padding-top:9px;padding-bottom:9px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+nav.toc .wrap::-webkit-scrollbar{display:none}
+nav.toc a{white-space:nowrap;font-size:14px;color:var(--ink2);padding:7px 13px;border-radius:99px;font-weight:600}
+nav.toc a:hover{background:var(--blue2);color:var(--blue);text-decoration:none}
+nav.toc a.active{background:var(--ink);color:#fff}
+
+/* ---------- URGENT ---------- */
+.urgent{margin-top:32px;position:relative;z-index:5;background:#fff;border:1px solid #fecaca;border-left:6px solid var(--red);border-radius:var(--r);padding:20px 22px;display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;box-shadow:0 18px 40px -20px rgba(185,28,28,.45)}
+.cd{text-align:center;background:var(--red2);border-radius:14px;padding:10px 16px;min-width:96px}
+.cd b{display:block;font-family:Fraunces,serif;font-size:40px;color:var(--red);line-height:1}
+.cd small{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red)}
+.urgent h3{font-size:20px;margin-bottom:4px}
+.urgent p{margin:0;color:var(--ink2);font-size:15px}
+.btn{display:inline-flex;align-items:center;gap:6px;background:var(--blue);color:#fff;padding:11px 18px;border-radius:12px;font-weight:700;font-size:15px;white-space:nowrap}
+.btn:hover{background:var(--blue-d);text-decoration:none}
+.btn.red{background:var(--red)}
+@media(max-width:720px){.urgent{grid-template-columns:auto 1fr}.urgent .btn{grid-column:1/-1;justify-content:center}}
+
+/* ---------- SECTIONS ---------- */
+section{padding:64px 0 8px}
+.sec-head{margin-bottom:24px;max-width:780px}
+.eyebrow{font-size:12.5px;font-weight:800;color:var(--blue);letter-spacing:.12em;text-transform:uppercase}
+.sec-head h2{font-size:clamp(28px,4.2vw,40px);margin:8px 0 10px}
+.sec-head p{color:var(--ink2);margin:0}
+
+/* status panel */
+.status{display:grid;grid-template-columns:1.1fr 1fr;gap:16px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;box-shadow:var(--shadow)}
+.meter-row{display:flex;align-items:flex-end;gap:16px;margin:10px 0 18px}
+.big{font-family:Fraunces,serif;font-size:56px;font-weight:800;line-height:1}
+.big.dim{color:var(--amber)}
+.arrow{font-size:28px;color:var(--muted);padding-bottom:8px}
+.bar{position:relative;height:14px;background:#edf2f7;border-radius:99px;overflow:visible;margin:28px 0 8px}
+.bar .fill{position:absolute;left:0;top:0;bottom:0;border-radius:99px;background:linear-gradient(90deg,#f59e0b,#00629b)}
+.bar .mark{position:absolute;top:-24px;transform:translateX(-50%);font-size:11px;font-weight:800;color:var(--red);white-space:nowrap}
+.bar .mark::after{content:"";position:absolute;left:50%;top:18px;width:2px;height:24px;background:var(--red)}
+.bar .dot{position:absolute;top:50%;width:16px;height:16px;border-radius:50%;transform:translate(-50%,-50%);border:3px solid #fff;box-shadow:0 0 0 1px var(--line)}
+.legend{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+.checklist{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.checklist li{display:grid;grid-template-columns:26px 1fr;gap:10px;font-size:15px;color:var(--ink2)}
+.checklist li::before{content:"✓";width:26px;height:26px;border-radius:8px;background:var(--green2);color:var(--green);display:grid;place-items:center;font-weight:800;font-size:13px}
+.checklist li.warn::before{content:"!";background:var(--amber2);color:var(--amber)}
+.checklist b{color:var(--ink)}
+@media(max-width:860px){.status{grid-template-columns:1fr}}
+
+/* timeline */
+.timeline{display:grid;gap:10px}
+.tl{display:grid;grid-template-columns:150px 1fr auto;gap:18px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px}
+.tl .d{font-weight:800;color:var(--blue);font-size:15px}
+.tl .w{font-weight:600}
+.tl .w small{display:block;font-weight:400;color:var(--muted);font-size:14px}
+.tl.soon{border-color:#fca5a5;background:#fff7f7}
+.tl.soon .d{color:var(--red)}
+.tl.past{opacity:.5}
+@media(max-width:640px){.tl{grid-template-columns:1fr;gap:4px}.tl .tags{margin-top:6px}}
+
+/* filters + search */
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:0 0 20px;position:sticky;top:54px;z-index:10;background:linear-gradient(var(--bg) 80%,transparent);padding:10px 0}
+.filters{display:flex;flex-wrap:wrap;gap:8px;flex:1}
+.filters button{font:inherit;font-size:14px;font-weight:600;border:1px solid var(--line);background:#fff;color:var(--ink2);padding:8px 14px;border-radius:99px;cursor:pointer;transition:.15s}
+.filters button:hover{border-color:var(--blue)}
+.filters button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.search{flex:0 1 260px;font:inherit;font-size:15px;padding:9px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;min-width:0}
+.search:focus{outline:2px solid var(--blue);outline-offset:1px}
+.count{font-size:13px;color:var(--muted);font-weight:600}
+@media(max-width:640px){.toolbar{position:static}.search{flex:1 1 100%}.filters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}.filters button{flex:0 0 auto}}
+
+.group-title{font-family:Fraunces,serif;font-size:22px;margin:30px 0 14px;display:flex;align-items:center;gap:10px}
+.group-title::after{content:"";flex:1;height:1px;background:var(--line)}
+
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow);transition:transform .18s,box-shadow .18s,border-color .18s}
+.card:hover{transform:translateY(-3px);box-shadow:0 18px 40px -20px rgba(11,22,38,.3);border-color:#cbd5e1}
+.card h3{font-size:20px}
+.amt{font-family:Fraunces,serif;font-size:23px;font-weight:800;color:var(--green);line-height:1.2}
+.card p{margin:0;color:var(--ink2);font-size:15px}
+.card ul{margin:0;padding-left:18px;color:var(--ink2);font-size:14.5px}
+.card li{margin:3px 0}
+.foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding-top:12px;border-top:1px dashed var(--line);font-size:14px}
+.when{color:var(--muted);font-weight:600;display:inline-flex;align-items:center;gap:6px}
+.when::before{content:"";width:7px;height:7px;border-radius:50%;background:#94a3b8}
+.when.hot{color:var(--red)}.when.hot::before{background:var(--red)}
+.go{display:inline-flex;align-items:center;gap:4px;background:var(--blue2);padding:6px 12px;border-radius:10px}
+.go:hover{background:var(--blue);color:#fff;text-decoration:none}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:11.5px;font-weight:800;padding:3px 9px;border-radius:99px;letter-spacing:.02em}
+.t-sb{background:var(--blue2);color:var(--blue)}.t-cs{background:var(--violet2);color:var(--violet)}
+.t-wie{background:var(--pink2);color:var(--pink)}.t-ai{background:var(--amber2);color:var(--amber)}
+.t-ind{background:var(--green2);color:var(--green)}.t-proj{background:var(--sky2);color:var(--sky)}
+.t-gov{background:#fef9c3;color:#854d0e}
+.hidden{display:none!important}
+.empty{display:none;text-align:center;color:var(--muted);padding:30px;background:#fff;border:1px dashed var(--line);border-radius:var(--r)}
+
+/* committees */
+.comm{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px}
+.cm{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.cm::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--c,var(--blue))}
+.cm .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:20px;background:var(--cbg,var(--blue2));margin-bottom:12px}
+.cm h3{font-size:19px;margin-bottom:4px}
+.cm .goal{font-size:13.5px;font-weight:700;color:var(--c,var(--blue));margin-bottom:10px}
+.cm ul{margin:0;padding-left:18px;color:var(--ink2);font-size:14.5px}
+.cm li{margin:4px 0}
+.cm .kpi{margin-top:12px;font-size:13px;background:var(--bg);border-radius:10px;padding:8px 12px;color:var(--ink2)}
+.cm .kpi b{color:var(--ink)}
+.rhythm{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+.rh{background:var(--ink);color:#cbd5e1;border-radius:14px;padding:16px;font-size:14px}
+.rh b{display:block;color:#fff;font-size:15px;margin-bottom:4px}
+@media(max-width:860px){.rhythm{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.rhythm{grid-template-columns:1fr}}
+
+/* proof */
+.proof{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px}
+.pf{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}
+.pf .m{font-family:Fraunces,serif;font-weight:800;color:var(--green);font-size:20px;min-width:86px}
+.pf .m small{display:block;font-family:Inter;font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.pf b{display:block;font-size:15px}
+.pf span{font-size:14px;color:var(--ink2)}
+.pf a{font-size:13px}
+@media(max-width:420px){.proof{grid-template-columns:1fr}.pf{grid-template-columns:1fr}}
+
+/* rules */
+.rules{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px 14px;counter-reset:r;margin-top:14px}
+.rule{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 20px 20px;position:relative}
+.rule::before{counter-increment:r;content:counter(r);position:absolute;top:-15px;left:18px;width:32px;height:32px;border-radius:10px;background:var(--blue);color:#fff;font-weight:800;display:grid;place-items:center;font-size:14px}
+.rule b{display:block;margin-bottom:4px}
+.rule p{margin:0;color:var(--ink2);font-size:14.5px}
+
+/* portals */
+.portals{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.portal{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;color:var(--ink);font-weight:700}
+.portal span{font-weight:500;font-size:13px;color:var(--muted)}
+.portal:hover{border-color:var(--blue);text-decoration:none;box-shadow:var(--shadow)}
+
+.note{background:var(--amber2);border:1px solid #fcd34d;border-radius:14px;padding:16px 18px;color:#78350f;font-size:15px}
+
+/* footer */
+footer{margin-top:72px;background:#07111e;color:#9fb0c7;padding:48px 0 30px;font-size:14px}
+footer .cols{display:grid;grid-template-columns:1.2fr 2fr;gap:36px}
+footer h4{color:#fff;font-family:Fraunces,serif;font-size:20px;margin:0 0 8px}
+footer a{color:#e2ecf7;font-weight:500}
+.author{display:flex;gap:14px;align-items:center;margin-top:18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:14px}
+.av{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#00629b,#38bdf8);display:grid;place-items:center;color:#fff;font-weight:800;font-size:16px;flex:none}
+.author b{color:#fff;display:block}
+.li{display:inline-flex;align-items:center;gap:6px;margin-top:4px;background:#0a66c2;color:#fff!important;padding:5px 11px;border-radius:8px;font-weight:700!important;font-size:13px}
+.li:hover{text-decoration:none;filter:brightness(1.1)}
+.src{columns:2 240px;column-gap:28px}
+.src a{display:block;margin:3px 0;break-inside:avoid}
+.fine{border-top:1px solid rgba(255,255,255,.08);margin-top:30px;padding-top:18px;font-size:12.5px;color:#7c8ca3}
+@media(max-width:760px){footer .cols{grid-template-columns:1fr}}
+
+.totop{position:fixed;right:18px;bottom:18px;width:46px;height:46px;border-radius:14px;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:20px;box-shadow:0 10px 24px -10px rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:.2s;z-index:40}
+.totop.show{opacity:1;pointer-events:auto}
+.totop:hover{text-decoration:none;background:var(--blue)}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand"><div class="logo">SB</div><div>SUAS IEEE Student Branch<small>CS · WIE · AI/ML (upcoming)</small></div></div>
+      <div class="official">
+        <a class="ext" href="https://www.ieee.org" target="_blank" rel="noopener">ieee.org</a>
+        <a class="ext" href="https://students.ieee.org" target="_blank" rel="noopener">IEEE Students</a>
+        <a class="ext" href="https://ieeeindiacouncil.org" target="_blank" rel="noopener">India Council</a>
+        <a class="ext" href="https://www.ieeer10.org" target="_blank" rel="noopener">Region 10</a>
+      </div>
+    </div>
+    <span class="kicker"><i></i>Updated 13 Nov 2026 · every link goes to an official source</span>
+    <h1>Your IEEE <em>Opportunity Atlas</em></h1>
+    <p class="lead">Every grant, fund, competition, award and startup scheme open to us as IEEE student members, plus Indian student branches who already won them. Pick one, form a team and apply.</p>
+    <div class="byline">Curated by <a href="https://www.linkedin.com/in/yashupadhyay-yashord" target="_blank" rel="noopener">Yash Upadhyay</a>, Chair, SUAS IEEE SB</div>
+    <div class="stats">
+      <div class="stat"><b>US$10,000</b><span>max per EPICS in IEEE project</span></div>
+      <div class="stat"><b>₹10 lakh</b><span>DST NIDHI-PRAYAS prototype grant</span></div>
+      <div class="stat"><b>30+</b><span>programs on this page</span></div>
+      <div class="stat"><b>₹0</b><span>to apply to almost all of them</span></div>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" id="toc"><div class="wrap">
+  <a href="#now">⚡ Act now</a>
+  <a href="#status">Our branch</a>
+  <a href="#calendar">Calendar</a>
+  <a href="#opps">Opportunities</a>
+  <a href="#compete">Competitions</a>
+  <a href="#awards">Awards</a>
+  <a href="#proof">Who won</a>
+  <a href="#committees">Committees</a>
+  <a href="#rules">Playbook</a>
+  <a href="#portals">Official portals</a>
+</div></nav>
+
+<div class="wrap">
+  <div class="urgent" id="now">
+    <div class="cd"><b id="days">–</b><small>days left</small></div>
+    <div><h3>TryEngineering STEM Grants close 30 Nov 2026</h3>
+      <p>Run a hands-on STEM programme for school students (robotics, IoT, coding, drones). Recent grants were around US$1,000–2,000. A good first project for WIE and CS volunteers.</p></div>
+    <a class="btn red ext" href="https://tryengineering.org/volunteer-stem-portal/stem-portal-grant/" target="_blank" rel="noopener">Apply now</a>
+  </div>
+</div>
+
+<!-- STATUS -->
+<section id="status"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">01 · Where we stand</div><h2>Our branch, by the numbers</h2>
+  <p>IEEE pays our yearly rebate and judges awards partly on membership, so every renewal counts. These are the figures that matter right now.</p></div>
+  <div class="status">
+    <div class="panel">
+      <div class="eyebrow" style="color:var(--muted)">Active members</div>
+      <div class="meter-row"><div><div class="big">103</div><small style="color:var(--muted)">today</small></div><div class="arrow">→</div><div><div class="big dim">~63</div><small style="color:var(--muted)">after 31 Dec (expected)</small></div></div>
+      <div class="bar">
+        <div class="fill" style="width:61%"></div>
+        <div class="mark" style="left:48.5%">50-member line</div>
+        <div class="dot" style="left:61%;background:var(--amber)"></div>
+        <div class="dot" style="left:100%;background:var(--blue)"></div>
+      </div>
+      <div class="legend"><span>0</span><span>63</span><span>103</span></div>
+      <p style="margin:16px 0 0;color:var(--ink2);font-size:15px"><b style="color:var(--ink)">Why 50 matters:</b> IEEE's yearly SB allotment is US$100 for branches with 50+ members and US$50 below that. The IEEE India Council Outstanding SB award has also required more than 50 active members (2020 call).</p>
+    </div>
+    <div class="panel">
+      <div class="eyebrow" style="color:var(--muted)">What we must do</div>
+      <ul class="checklist" style="margin-top:12px">
+        <li class="warn"><span><b>Renewal drive before 31 Dec.</b> Each renewal keeps a member and adds to our rebate (US$2 per student member, +US$1 per chapter member).</span></li>
+        <li class="warn"><span><b>Annual Plan on vTools by 1 Feb.</b> Required for the rebate and allotment.</span></li>
+        <li><span><b>Report 4+ events on vTools</b> for the year. More is better: grant reviewers check it.</span></li>
+        <li><span><b>Keep officers updated</b> in vTools Officer Reporting for the SB and every chapter.</span></li>
+        <li><span><b>Stay above 50 members</b> all year by onboarding first-years early.</span></li>
+      </ul>
+      <p style="margin:14px 0 0;font-size:14px"><a class="ext" href="https://students.ieee.org/student-branch-resources-2/" target="_blank" rel="noopener">IEEE SB resources</a> · <a class="ext" href="https://sbr.vtools.ieee.org/" target="_blank" rel="noopener">vTools SB Reporting</a> · <a class="ext" href="https://events.vtools.ieee.org/" target="_blank" rel="noopener">vTools Events</a></p>
+    </div>
+  </div>
+</div></section>
+
+<!-- CALENDAR -->
+<section id="calendar"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">02 · Plan the year</div><h2>The funding calendar</h2>
+  <p>Most deadlines repeat every year around the same dates. Dates below follow the 2026 cycle, so confirm the 2027 date on the official page before you start writing.</p></div>
+  <div class="timeline" id="tl">
+    <div class="tl" data-date="2026-11-30"><div class="d">30 Nov 2026</div><div class="w">TryEngineering STEM Grant (2027 cycle)<small>School STEM outreach · team grant</small></div><span class="tags"><span class="tag t-proj">Project</span></span></div>
+    <div class="tl" data-date="2026-12-31"><div class="d">31 Dec 2026</div><div class="w">Membership renewal drive deadline<small>Keep the branch above 50 members</small></div><span class="tags"><span class="tag t-sb">SB</span></span></div>
+    <div class="tl" data-date="2027-02-01"><div class="d">1 Feb (yearly)</div><div class="w">SB Annual Plan on vTools<small>Unlocks the yearly IEEE rebate + allotment</small></div><span class="tags"><span class="tag t-sb">SB</span></span></div>
+    <div class="tl" data-date="2027-03-06"><div class="d">~Early Mar</div><div class="w">IEEE R10 Educational Activities grants<small>2026 deadline was 6 Mar</small></div><span class="tags"><span class="tag t-sb">SB</span></span></div>
+    <div class="tl" data-date="2027-03-15"><div class="d">~Mid Mar</div><div class="w">IEEE Tech4Good project proposals<small>US$2,500–10,000 · SIGHT groups</small></div><span class="tags"><span class="tag t-proj">Project</span></span></div>
+    <div class="tl" data-date="2027-04-30"><div class="d">30 Apr & 30 Sep</div><div class="w">IEEE CS Richard E. Merwin Scholarship<small>For active student volunteers</small></div><span class="tags"><span class="tag t-ind">Individual</span></span></div>
+    <div class="tl" data-date="2027-05-01"><div class="d">1 Mar – 1 May</div><div class="w">EPICS in IEEE (spring call)<small>Up to US$10,000 per community project</small></div><span class="tags"><span class="tag t-proj">Project</span></span></div>
+    <div class="tl" data-date="2027-05-01"><div class="d">1 May 2027</div><div class="w">Empower a Billion Lives (full proposals)<small>IEEE PELS energy-access competition · student track</small></div><span class="tags"><span class="tag t-ai">Startup</span></span></div>
+    <div class="tl" data-date="2027-05-30"><div class="d">~End May</div><div class="w">IEEE CS Outstanding Chapter Award<small>2026 deadline was 30 May</small></div><span class="tags"><span class="tag t-cs">CS</span></span></div>
+    <div class="tl" data-date="2027-08-31"><div class="d">~Jun – Aug</div><div class="w">SIGHT Group Activity Initiative<small>Up to US$300 for active SIGHT groups</small></div><span class="tags"><span class="tag t-proj">Project</span></span></div>
+    <div class="tl" data-date="2027-10-01"><div class="d">1 Sep – 1 Oct</div><div class="w">EPICS in IEEE (autumn call)<small>Second chance each year</small></div><span class="tags"><span class="tag t-proj">Project</span></span></div>
+    <div class="tl" data-date="2027-10-09"><div class="d">Sep – Oct</div><div class="w">Smart India Hackathon<small>Internal round → college SPOC nominates teams of 6</small></div><span class="tags"><span class="tag t-gov">Govt. of India</span></span></div>
+    <div class="tl" data-date="2027-10-31"><div class="d">~Late Oct</div><div class="w">IEEEXtreme 24-hour coding contest<small>Host a proctored venue at SUAS</small></div><span class="tags"><span class="tag t-cs">CS</span></span></div>
+    <div class="tl" data-date="2027-10-31"><div class="d">~Aug – Oct</div><div class="w">IEEE India Council awards<small>SB, emerging SB, volunteer awards</small></div><span class="tags"><span class="tag t-sb">SB</span></span></div>
+  </div>
+</div></section>
+
+<!-- OPPORTUNITIES -->
+<section id="opps"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">03 · The opportunities</div><h2>Grants & funds you can apply for</h2>
+  <p>Filter by who it's for, or search. Every "Official page" button goes to the IEEE or Government of India page for that program.</p></div>
+
+  <div class="toolbar">
+    <div class="filters" id="filters">
+      <button class="on" data-f="all">All</button>
+      <button data-f="proj">Project grants</button>
+      <button data-f="sb">Student Branch</button>
+      <button data-f="cs">CS</button>
+      <button data-f="wie">WIE</button>
+      <button data-f="ai">AI/ML & startup</button>
+      <button data-f="ind">Individual</button>
+    </div>
+    <input class="search" id="q" type="search" placeholder="Search e.g. travel, drone, women…" aria-label="Search opportunities">
+  </div>
+  <div class="count" id="count"></div>
+
+  <div id="cards">
+  <h3 class="group-title" data-g="proj">💰 Project grants: the big money</h3>
+  <div class="grid">
+    <article class="card" data-tags="proj sb ai">
+      <div class="tags"><span class="tag t-proj">Project</span><span class="tag t-sb">SB / any chapter</span></div>
+      <h3>EPICS in IEEE</h3><div class="amt">up to US$10,000</div>
+      <p>Funds engineering projects for local communities (schools, NGOs, villages). Students design, build and deploy the solution, with mentorship and resources.</p>
+      <ul><li>Student branches can apply: at least one IEEE member, and the team must include students.</li>
+      <li>Two calls a year: 1 Mar–1 May and 1 Sep–1 Oct.</li>
+      <li>Funded teams can claim up to US$1,000 to travel and present at IEEE conferences.</li></ul>
+      <div class="foot"><span class="when">Next: Mar–May 2027</span><a class="go ext" href="https://epics.ieee.org/getting-started/" target="_blank" rel="noopener">Official page</a></div>
+    </article>
+    <article class="card" data-tags="proj">
+      <div class="tags"><span class="tag t-proj">Project</span></div>
+      <h3>IEEE Tech4Good (SIGHT)</h3><div class="amt">US$2,500 – 10,000</div>
+      <p>Humanitarian-technology projects run by SIGHT groups. In 2026, proposals were due by 15 March.</p>
+      <ul><li>Students can be on the team but can't be the primary applicant, so a faculty member or IEEE professional leads.</li>
+      <li>Forming a SIGHT group under our SB unlocks this and smaller SIGHT funds.</li></ul>
+      <div class="foot"><span class="when">~Mar yearly</span><a class="go ext" href="https://sight.ieee.org" target="_blank" rel="noopener">Official page</a></div>
+    </article>
+    <article class="card" data-tags="proj wie sb">
+      <div class="tags"><span class="tag t-proj">Project</span><span class="tag t-wie">WIE track</span></div>
+      <h3>TryEngineering STEM Grants</h3><div class="amt">~US$500 – 2,000</div>
+      <p>Funds volunteer-run STEM outreach for school students. Since 2021 it has funded 272 programs worth over US$329,773. WIE and IEEE CS fund some of the grants.</p>
+      <div class="foot"><span class="when hot">Closes 30 Nov 2026</span><a class="go ext" href="https://tryengineering.org/volunteer-stem-portal/stem-portal-grant/" target="_blank" rel="noopener">Official page</a></div>
+    </article>
+    <article class="card" data-tags="proj sb">
+      <div class="tags"><span class="tag t-proj">Project</span></div>
+      <h3>SIGHT Group Activity Initiative</h3><div class="amt">up to US$300</div>
+      <p>For established, active SIGHT groups running humanitarian-tech activities. Funded groups also qualify for the SIGHT Global Contest.</p>
+      <div class="foot"><span class="when">~Jun–Aug yearly</span><a class="go ext" href="https://sight.ieee.org/2026/06/2026-ieee-sight-group-activity-initiative-now-open/" target="_blank" rel="noopener">Official page</a></div>
+    </article>
+    <article class="card" data-tags="proj sb">
+      <div class="tags"><span class="tag t-proj">Project</span><span class="tag t-sb">via Section</span></div>
+      <h3>R10 HTA Resource Support Program</h3><div class="amt">up to US$500</div>
+      <p>Region 10 support for Sections, Chapters and SIGHT groups running humanitarian-tech initiatives. The 2026 deadline was 31 May.</p>
+      <div class="foot"><span class="when">~May yearly</span><a class="go ext" href="https://hac.ieeer10.org/?p=1557" target="_blank" rel="noopener">Official page</a></div>
+    </article>
+  </div>
+
+  <h3 class="group-title" data-g="sb">🏛️ Student Branch funding</h3>
+  <div class="grid">
+    <article class="card" data-tags="sb">
+      <div class="tags"><span class="tag t-sb">SB</span><span class="tag t-sb">Every year</span></div>
+      <h3>IEEE SB Rebate + Allotment</h3><div class="amt">US$2 / member + US$50–100</div>
+      <p>US$2 per student member, plus US$1 per chapter member, plus a US$100 allotment (50+ members) or US$50 (below 50).</p>
+      <ul><li>Officers reported on vTools</li><li>4+ events reported on vTools in the previous year</li><li>Annual Plan submitted by 1 Feb</li></ul>
+      <div class="foot"><span class="when">Due 1 Feb</span><a class="go ext" href="https://students.ieee.org/student-branch-resources-2/" target="_blank" rel="noopener">Official page</a></div>
+    </article>
+    <article class="card" data-tags="sb">
+      <div class="tags"><span class="tag t-sb">SB</span></div>
+      <h3>Our IEEE Section</h3><div class="amt">Varies</div>
+      <p>Student branches can ask their parent Section for extra funding and support. Usually this is the biggest recurring IEEE source. Ask the Section SAC what they fund and what they need from us.</p>
+      <div class="foot"><span class="when">Anytime</span><a class="go ext" href="https://students.ieee.org/student-branch-resources-2/" target="_blank" rel="noopener">Official page</a></div>
+    </article>
+    <article class="card" data-tags="sb">
+      <div class="tags"><span class="tag t-sb">SB</span></div>
+      <h3>SPAx: Professional Awareness</h3><div class="amt">Event funding</div>
+      <p>Funds career, ethics, leadership and communication events, plus broad technical topics. We design the event. Comes with a virtual speaker list. Can't be used for travel.</p>
+      <div class="foot"><span class="when">Rolling</span><a class="go ext" href="https://students.ieee.org/student-opportunities/professional-awareness/" target="_blank" rel="noopener">Official page</a></div>
+    </article>
+    <article class="card" data-tags="sb cs wie ai">
+      <div class="tags"><span class="tag t-sb">SB & chapters</span></div>
+      <h3>IEEE YP STEP Funding</h3><div class="amt">Event funding</div>
+      <p>For events that bring Young Professionals and students together around the move from student to professional. Student Branches and chapters can apply. Several cycles a year.</p>
+      <div class="foot"><span class="when">Multiple cycles</span><a class="go ext" href="https://yp.ieee.org/yp-event-funding-v2/" target="_blank" rel="noopener">Official page</a></div>
+    </article>
+    <article class="card" data-tags="sb">
+      <div class="tags"><span class="tag t-sb">SB</span></div>
+      <h3>R10 Educational Activities Grant</h3><div class="amt">Grant</div>
+      <p>Region 10 grants for educational activities. 2026 timeline: deadline 6 Mar, results 1 Apr, activities Apr–Aug. IEEE NSUT Student Branch (Delhi) has won one before.</p>
+      <div class="foot"><span class="when">~Feb–Mar</span><a class="go ext" href="https://ea.ieeer10.org/" target="_blank" rel="noopener">Official page</a></div>
+    </article>
+    <article class="card" data-tags="sb">
+      <div class="tags"><span class="tag t-sb">SB</span></div>
+      <h3>Host the R10 Student Summit</h3><div class="amt">up to US$2,000</div>
+      <p>Region 10 SAC funds the student branch(es) selected to host its Student Summit. Hosts need hybrid capability. Would make a great flagship event.</p>
+      <div class="foot"><span class="when">Call ~Feb</span><a class="go ext" href="https://sac.ieeer10.org/" target="_blank" rel="noopener">Official page</a></div>
+    </article>
+  </div>
+
+  <h3 class="group-title" data-g="cs">💻 Computer Society chapter</h3>
+  <div class="grid">
+    <article class="card" data-tags="cs">
+      <div class="tags"><span class="tag t-cs">CS</span></div>
+      <h3>IEEE CS Chapter Grants</h3><div class="amt">up to US$500 each</div>
+      <p>Student chapters can apply for small grants. First-come, first-served, and you can apply for several in one year. Each grant needs a final report.</p>
+      <div class="foot"><span class="when">Rolling</span><a class="go ext" href="https://www.computer.org/communities/professional-chapters/resources/funding" target="_blank" rel="noopener">Official page</a></div>
+    </article>
+    <article class="card" data-tags="cs">
+      <div class="tags"><span class="tag t-cs">CS</span></div>
+      <h3>CS Distinguished Visitors Program</h3><div class="amt">Free expert speakers</div>
+      <p>Leading tech experts for chapter events. Virtual visits are free. For in-person visits CS pays up to US$1,500 inter-city travel and we cover local costs.</p>
+      <div class="foot"><span class="when">Request ahead</span><a class="go ext" href="https://www.computer.org/communities/professional-chapters/distinguished-visitors-program" target="_blank" rel="noopener">Official page</a></div>
+    </article>
+    <article class="card" data-tags="cs">
+      <div class="tags"><span class="tag t-cs">CS</span></div>
+      <h3>CS New-Chapter Startup Funding</h3><div class="amt">US$150</div>
+      <p>Newly formed CS chapters get US$150 automatically. More funding is available by application.</p>
+      <div class="foot"><span class="when">On formation</span><a class="go ext" href="https://www.computer.org/communities/professional-chapters/start-a-chapter" target="_blank" rel="noopener">Official page</a></div>
+    </article>
+  </div>
+
+  <h3 class="group-title" data-g="wie">👩‍🔬 Women in Engineering</h3>
+  <div class="grid">
+    <article class="card" data-tags="wie">
+      <div class="tags"><span class="tag t-wie">WIE</span></div>
+      <h3>WIE Special Funding</h3><div class="amt">up to US$400</div>
+      <p>For special projects and activities that fit WIE's mission. Once a year, future events only. The Chair, Vice-Chair or WIE Society Rep submits it.</p>
+      <div class="foot"><span class="when">2027 window open</span><a class="go ext" href="https://wie.ieee.org/affinity-groups/funding/" target="_blank" rel="noopener">Official page</a></div>
+    </article>
+    <article class="card" data-tags="wie">
+      <div class="tags"><span class="tag t-wie">WIE</span></div>
+      <h3>R10 WIE Special Support Fund</h3><div class="amt">up to US$400</div>
+      <p>Region 10 WIE fund for in-person activities. One proposal per WIE group, with the Section Chair's endorsement. Joint proposals with other IEEE units, industry or academia are encouraged.</p>
+      <div class="foot"><span class="when">Yearly call</span><a class="go ext" href="https://wie.ieeer10.org/" target="_blank" rel="noopener">Official page</a></div>
+    </article>
+    <article class="card" data-tags="wie">
+      <div class="tags"><span class="tag t-wie">WIE</span></div>
+      <h3>WIE Initial Funding</h3><div class="amt">up to US$200</div>
+      <p>One-time money for WIE groups formed in the current or previous calendar year.</p>
+      <div class="foot"><span class="when">New groups</span><a class="go ext" href="https://wie.ieee.org/affinity-groups/form-manage/" target="_blank" rel="noopener">Official page</a></div>
+    </article>
+    <article class="card" data-tags="wie ind">
+      <div class="tags"><span class="tag t-wie">WIE</span><span class="tag t-ind">Individual</span></div>
+      <h3>WIE Travel Grant</h3><div class="amt">up to US$750</div>
+      <p>Helps WIE members attend and present at IEEE-sponsored conferences. Open to members in their second continuous year of WIE membership.</p>
+      <div class="foot"><span class="when">Rolling</span><a class="go ext" href="https://wie.ieee.org/about/faqs/" target="_blank" rel="noopener">Official page</a></div>
+    </article>
+    <article class="card" data-tags="wie">
+      <div class="tags"><span class="tag t-wie">WIE</span></div>
+      <h3>Free WIE Promo Kit</h3><div class="amt">Banners, pens, totes</div>
+      <p>One request per year. Order at least 3 weeks before the event.</p>
+      <div class="foot"><span class="when">3 weeks ahead</span><a class="go ext" href="https://wie.ieee.org/affinity-groups/promotional-request-form/" target="_blank" rel="noopener">Official page</a></div>
+    </article>
+  </div>
+
+  <h3 class="group-title" data-g="ai">🤖 AI/ML chapter & startups</h3>
+  <div class="grid">
+    <article class="card" data-tags="ai">
+      <div class="tags"><span class="tag t-ai">AI/ML chapter</span></div>
+      <h3>Society start-up grants for new chapters</h3><div class="amt">US$100 – 500</div>
+      <p>Each new chapter belongs to an IEEE Society, and many Societies give new chapters start-up money. SMC, for example, offers up to US$500 within 12 months of formation. Compare Societies (e.g. Computational Intelligence vs SMC) before petitioning.</p>
+      <div class="foot"><span class="when">First 12 months</span><a class="go ext" href="https://www.ieeesmc.org/chapters-communities/support-for-chapters/" target="_blank" rel="noopener">Official page</a></div>
+    </article>
+    <article class="card" data-tags="ai ind">
+      <div class="tags"><span class="tag t-ai">AI/ML</span><span class="tag t-ind">Individual</span></div>
+      <h3>IEEE CIS Student Grants</h3><div class="amt">Travel & research</div>
+      <p>The Computational Intelligence Society offers conference-participation grants for students presenting papers at CIS conferences, plus research grants for visits during academic breaks.</p>
+      <div class="foot"><span class="when">Per conference</span><a class="go ext" href="https://cis.ieee.org" target="_blank" rel="noopener">Official page</a></div>
+    </article>
+    <article class="card" data-tags="ai ind">
+      <div class="tags"><span class="tag t-gov">Govt. of India</span><span class="tag t-ind">Students</span></div>
+      <h3>DST NIDHI-PRAYAS</h3><div class="amt">up to ₹10 lakh</div>
+      <p>Proof-of-concept grant to turn an idea into a prototype. No registered company needed. Apply through a PRAYAS Centre at an incubator, which also provides lab space and mentors. Not for products already past prototype. One grant per innovator.</p>
+      <div class="foot"><span class="when">Centre-wise calls</span><a class="go ext" href="https://nidhi-prayas.org" target="_blank" rel="noopener">Official page</a></div>
+    </article>
+    <article class="card" data-tags="ai sb">
+      <div class="tags"><span class="tag t-ai">Startup</span><span class="tag t-sb">Group</span></div>
+      <h3>IEEE Entrepreneurship Local Group</h3><div class="amt">US$500</div>
+      <p>For the first 15 Entrepreneurship Local Groups formally approved by their IEEE Sections. A group needs at least two IEEE members in good standing, one of them a voting member. Good for pitch days and founder talks.</p>
+      <div class="foot"><span class="when">First-come</span><a class="go ext" href="https://entrepreneurship.ieee.org/local-groups/" target="_blank" rel="noopener">Official page</a></div>
+    </article>
+    <article class="card" data-tags="ai proj">
+      <div class="tags"><span class="tag t-ai">Startup</span><span class="tag t-proj">Student track</span></div>
+      <h3>IEEE Empower a Billion Lives</h3><div class="amt">Global prize pool</div>
+      <p>A competition run by the IEEE Power Electronics Society (PELS) to find scalable solutions for people with little or no energy access. It has a dedicated student track, and full proposals for the 2027 edition are due 1 May 2027.</p>
+      <div class="foot"><span class="when">1 May 2027</span><a class="go ext" href="https://empowerabillionlives.org/" target="_blank" rel="noopener">Official page</a></div>
+    </article>
+  </div>
+  </div>
+  <div class="empty" id="empty">No matches. Try another filter or search term.</div>
+</div></section>
+
+<!-- COMPETITIONS -->
+<section id="compete"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">04 · Prove it on a stage</div><h2>Competitions to field teams in</h2></div>
+  <div class="grid">
+    <article class="card"><div class="tags"><span class="tag t-cs">CS</span></div><h3>IEEEXtreme</h3><div class="amt">24 hrs · teams of ≤3</div>
+      <p>IEEE's global coding contest, open only to IEEE student members. The 20th edition ran on 31 Oct 2026. We could host a proctored venue at SUAS.</p>
+      <div class="foot"><span class="when">~Oct yearly</span><a class="go ext" href="https://ieeextreme.org/" target="_blank" rel="noopener">Official page</a></div></article>
+    <article class="card"><div class="tags"><span class="tag t-wie">WIE</span><span class="tag t-proj">Social impact</span></div><h3>IEEE YESIST12</h3><div class="amt">Global finale</div>
+      <p>Indian colleges host the preliminary rounds, and selected teams go to the international grand finale. We could apply to be a pilot host institute.</p>
+      <div class="foot"><span class="when">Prelims ~Mar</span><a class="go ext" href="https://ieeeyesist12.org" target="_blank" rel="noopener">Official page</a></div></article>
+    <article class="card"><div class="tags"><span class="tag t-cs">CS</span><span class="tag t-ai">AI/ML</span></div><h3>IEEE CS Global Student Challenge</h3><div class="amt">Global</div>
+      <p>Real-world programming and data-analytics problems. 420 teams took part in the first round in 2026.</p>
+      <div class="foot"><span class="when">~Spring</span><a class="go ext" href="https://www.computer.org/publications/tech-news/events/global-student-challenge-2026" target="_blank" rel="noopener">Official page</a></div></article>
+    <article class="card"><div class="tags"><span class="tag t-gov">Govt. of India</span></div><h3>Smart India Hackathon</h3><div class="amt">National</div>
+      <p>Run by the Ministry of Education and AICTE. Teams of exactly 6 with at least one woman. Students can't register directly: the college SPOC nominates teams after an internal hackathon. <b>Our SB can run SUAS's internal round.</b></p>
+      <div class="foot"><span class="when">Sep–Oct</span><a class="go ext" href="https://sih.gov.in" target="_blank" rel="noopener">Official page</a></div></article>
+  </div>
+</div></section>
+
+<!-- AWARDS -->
+<section id="awards"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">05 · Get recognised</div><h2>Awards & scholarships</h2></div>
+  <div class="grid">
+    <article class="card"><div class="tags"><span class="tag t-sb">SB</span></div><h3>IEEE India Council SB Awards</h3>
+      <p>Outstanding Student Branch and Outstanding Upcoming/Emerging Branch. Judged on membership, growth and activities. The Student Activities Chair must endorse the nomination.</p>
+      <div class="foot"><span class="when">~Aug–Oct</span><a class="go ext" href="https://ieeeindiacouncil.org/student-activities/awards/" target="_blank" rel="noopener">Official page</a></div></article>
+    <article class="card"><div class="tags"><span class="tag t-sb">SB / chapters</span></div><h3>Darrel Chong Student Activity Award</h3>
+      <p>Nominate one standout activity. Open to SBs, chapters and affinity groups.</p>
+      <div class="foot"><span class="when">Yearly</span><a class="go ext" href="https://students.ieee.org/the-darrel-chong-student-activity-award/" target="_blank" rel="noopener">Official page</a></div></article>
+    <article class="card"><div class="tags"><span class="tag t-cs">CS</span><span class="tag t-ind">Individual</span></div><h3>Richard E. Merwin Scholarship</h3>
+      <p>IEEE CS awards more than US$40,000 in scholarships each year to active student volunteers. Winners serve as Student Ambassadors. Deadlines: 30 Apr and 30 Sep.</p>
+      <div class="foot"><span class="when">Apr / Sep</span><a class="go ext" href="https://www.computer.org/volunteering/awards/scholarships/merwin" target="_blank" rel="noopener">Official page</a></div></article>
+    <article class="card"><div class="tags"><span class="tag t-cs">CS</span></div><h3>CS Outstanding Chapter Award</h3>
+      <p>Open to student chapters worldwide. The 2026 deadline was 30 May.</p>
+      <div class="foot"><span class="when">~May</span><a class="go ext" href="https://www.computer.org/communities/professional-chapters/resources/funding" target="_blank" rel="noopener">Official page</a></div></article>
+  </div>
+</div></section>
+
+<!-- PROOF -->
+<section id="proof"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">06 · It's been done</div><h2>Indian students who already won</h2>
+  <p>EPICS in IEEE and TryEngineering grants to Indian student branches. Each one links to its official project page.</p></div>
+  <div class="proof">
+    <div class="pf"><div class="m">$9,900<small>EPICS · 2024</small></div><div><b>College of Engineering Karunagappally SB + SIGHT</b><span>Solar-powered, Raspberry Pi water desalination and purification, with two Panchayats</span><br><a class="ext" href="https://epics.ieee.org/project/clean-current-india-9900/" target="_blank" rel="noopener">Project page</a></div></div>
+    <div class="pf"><div class="m">$6,820<small>EPICS · 2025</small></div><div><b>Ahmedabad University SB</b><span>Bio-mimetic autonomous underwater vehicle with SONAR, for marine research</span><br><a class="ext" href="https://epics.ieee.org/project/biomimicking-autonomous-underwater-vehicle-with-sonar-imaging/" target="_blank" rel="noopener">Project page</a></div></div>
+    <div class="pf"><div class="m">$6,800<small>EPICS · 2023</small></div><div><b>Nalla Malla Reddy Engg. College SB</b><span>NO₂-sensing drones for air-quality mapping</span><br><a class="ext" href="https://epics.ieee.org/project/nitrogen-sensing-drones-for-understanding-air-quality/" target="_blank" rel="noopener">Project page</a></div></div>
+    <div class="pf"><div class="m">$4,850<small>EPICS · 2026</small></div><div><b>Kumaraguru College of Tech, PES SB Chapter</b><span>Robotic exoskeleton for children with cerebral palsy</span><br><a class="ext" href="https://epics.ieee.org/project/empowering-independence-a-robotic-exoskeleton-solution-for-cerebral-palsy-affected-children-india/" target="_blank" rel="noopener">Project page</a></div></div>
+    <div class="pf"><div class="m">$4,433<small>EPICS · 2024</small></div><div><b>Sri Sai Ram Engg. College SB</b><span>Credit-based solar smart garbage bin</span><br><a class="ext" href="https://epics.ieee.org/project/credit-based-smart-garbage-disposal-bin-india-4433-00/" target="_blank" rel="noopener">Project page</a></div></div>
+    <div class="pf"><div class="m">$2,915<small>EPICS · 2025</small></div><div><b>Sri Sai Ram Engg. College SB + Madras Section</b><span>ApicTech: ML and IoT beehive monitoring for rural beekeepers</span><br><a class="ext" href="https://epics.ieee.org/project/apictech-advanced-beehive-monitoring/" target="_blank" rel="noopener">Project page</a></div></div>
+    <div class="pf"><div class="m">$1,200<small>EPICS · 2026</small></div><div><b>SRM TRP Engineering College SB</b><span>Adaptive scratch pad for children with autism and learning disorders</span><br><a class="ext" href="https://epics.ieee.org/project/controlled-interactive-scratch-pad-for-children-with-autism-spectrum-disorder-and-learning-disorder-adaptive/" target="_blank" rel="noopener">Project page</a></div></div>
+    <div class="pf"><div class="m">$1,000<small>TryEng · 2026</small></div><div><b>Narula Institute of Technology SB</b><span>Design-Build-Fly drone workshop for high-schoolers</span><br><a class="ext" href="https://tryengineering.org/news/announcement-tryengineering-stem-grant-recipients-2026/" target="_blank" rel="noopener">Recipients list</a></div></div>
+    <div class="pf"><div class="m">$800<small>EPICS · 2023</small></div><div><b>Sri Sai Ram Engg. College SB</b><span>Wsafe: women-safety app with a wearable</span><br><a class="ext" href="https://epics.ieee.org/project/wsafe-women-safety-application/" target="_blank" rel="noopener">Project page</a></div></div>
+    <div class="pf"><div class="m">$621<small>EPICS · 2022</small></div><div><b>VIT Chennai SB + Shuddhi NGO</b><span>Sensor-based smart trash collection app</span><br><a class="ext" href="https://epics.ieee.org/project/dreck-administration-for-immaculate-purlieu/" target="_blank" rel="noopener">Project page</a></div></div>
+  </div>
+  <p class="note" style="margin-top:16px">Every winner had three things: a <b>clear local problem</b>, a <b>named community partner</b> (NGO, school or panchayat) and a <b>tech solution they could actually build</b>.</p>
+</div></section>
+
+<!-- COMMITTEES -->
+<section id="committees"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">07 · How SUAS IEEE runs</div><h2>Always-on committees</h2>
+  <p>Event teams form for each event. Between events, every member also belongs to one always-on committee whose job is to grow SUAS IEEE: reporting, funding, members, collaborations, projects and visibility. <b>The quiet months are when we build.</b></p></div>
+  <div class="comm">
+    <div class="cm" style="--c:#00629b;--cbg:#e5f1f9"><div class="ic">📋</div><h3>vTools & Compliance Desk</h3><div class="goal">Goal: perfect IEEE records</div>
+      <ul><li>Report every event on vTools within 48 hours, with photos and attendance</li><li>Keep officer reporting current for the SB and all chapters</li><li>File the SB Annual Plan before 1 Feb</li><li>Check OU Analytics every month</li></ul>
+      <div class="kpi"><b>KPI:</b> 100% of events reported · 4+ per unit per year</div></div>
+    <div class="cm" style="--c:#047857;--cbg:#d1fae5"><div class="ic">💰</div><h3>Grants & Funding</h3><div class="goal">Goal: multiple funded proposals per year</div>
+      <ul><li>Keep the deadline tracker from this page up to date</li><li>Build a proposal bank: branch profile, past reports, photos, budgets</li><li>Submit at least one application a month across SB/CS/WIE/AI-ML</li><li>Track receipts and final reports so future funding isn't blocked</li></ul>
+      <div class="kpi"><b>KPI:</b> applications sent · amount won</div></div>
+    <div class="cm" style="--c:#b45309;--cbg:#fef3c7"><div class="ic">👥</div><h3>Membership & Retention</h3><div class="goal">Goal: stay well above 50 members</div>
+      <ul><li>Run a renewal drive before 31 Dec (103 → keep as many as possible)</li><li>Onboard first-years: explain benefits, help them join, get them involved</li><li>Help members add CS / WIE / Society memberships</li><li>Welcome sessions and member-only perks</li></ul>
+      <div class="kpi"><b>KPI:</b> renewal rate · net new members</div></div>
+    <div class="cm" style="--c:#5b21b6;--cbg:#ede9fe"><div class="ic">🤝</div><h3>Collaborations & Network</h3><div class="goal">Goal: SUAS known across the Section</div>
+      <ul><li>Run joint events and webinars with other colleges' IEEE SBs and chapters</li><li>Attend Section, Region 10 and India Council meets and congresses</li><li>Connect with the Section SAC, SSR and WIE / CS coordinators</li><li>Bring in DVP speakers and alumni</li></ul>
+      <div class="kpi"><b>KPI:</b> collaborations per semester</div></div>
+    <div class="cm" style="--c:#075985;--cbg:#e0f2fe"><div class="ic">🛠️</div><h3>Projects & R&D</h3><div class="goal">Goal: one fundable project every cycle</div>
+      <ul><li>Find community partners (NGOs, schools, panchayats)</li><li>Turn ideas into EPICS / TryEngineering / Tech4Good proposals</li><li>Run the build teams and document progress</li><li>Steer projects into competitions and papers</li></ul>
+      <div class="kpi"><b>KPI:</b> proposals → funded → deployed</div></div>
+    <div class="cm" style="--c:#a3195b;--cbg:#fce7f3"><div class="ic">📣</div><h3>Media & Documentation</h3><div class="goal">Goal: everything visible, everything archived</div>
+      <ul><li>Photos, reports and posts for every event</li><li>Maintain the branch LinkedIn, Instagram and this Atlas</li><li>Submit stories to IEEE newsletters (WIE, CS, Section)</li><li>Keep the archive that award and grant applications need</li></ul>
+      <div class="kpi"><b>KPI:</b> reach · stories published</div></div>
+  </div>
+  <div class="rhythm">
+    <div class="rh"><b>Weekly</b>30-min sync with committee leads</div>
+    <div class="rh"><b>Monthly</b>Review: KPIs, grants sent and won, vTools status</div>
+    <div class="rh"><b>Every event</b>Event team forms, then Media and vTools close it out</div>
+    <div class="rh"><b>Every semester</b>Recognise the best committee and pair each lead with a junior to take over</div>
+  </div>
+</div></section>
+
+<!-- RULES -->
+<section id="rules"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">08 · The playbook</div><h2>How we win these</h2></div>
+  <div class="rules">
+    <div class="rule"><b>Report everything on vTools</b><p>Reviewers check our track record there. Some Societies, like SMC, only count events reported on vTools.</p></div>
+    <div class="rule"><b>Get the Section on our side</b><p>Many grants need Section endorsement. Money is routed through approved IEEE accounts, never personal ones.</p></div>
+    <div class="rule"><b>Partner with a real community</b><p>Every winning project above named an NGO, school or panchayat. Find the partner first, then design the tech.</p></div>
+    <div class="rule"><b>Apply before, report after</b><p>Most funds don't cover past events and need receipts plus a final report. A late report blocks next year's funding.</p></div>
+    <div class="rule"><b>One unit, its own funders</b><p>SB, CS, WIE and AI/ML each apply to their own sources, so we don't compete with ourselves.</p></div>
+    <div class="rule"><b>Use the free training</b><p>EPICS offers a proposal-writing course and budgeting videos. Watch them before writing.</p></div>
+  </div>
+</div></section>
+
+<!-- PORTALS -->
+<section id="portals"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">09 · Official sources</div><h2>Official IEEE portals</h2><p>Bookmark these. Everything on this page comes from them.</p></div>
+  <div class="portals">
+    <a class="portal ext" href="https://www.ieee.org" target="_blank" rel="noopener">IEEE<span>ieee.org</span></a>
+    <a class="portal ext" href="https://students.ieee.org" target="_blank" rel="noopener">IEEE Students<span>students.ieee.org</span></a>
+    <a class="portal ext" href="https://events.vtools.ieee.org/" target="_blank" rel="noopener">vTools Events<span>Report every event here</span></a>
+    <a class="portal ext" href="https://sbr.vtools.ieee.org/" target="_blank" rel="noopener">vTools SB Reporting<span>Annual Plan</span></a>
+    <a class="portal ext" href="https://ieeeindiacouncil.org" target="_blank" rel="noopener">IEEE India Council<span>ieeeindiacouncil.org</span></a>
+    <a class="portal ext" href="https://www.ieeer10.org" target="_blank" rel="noopener">IEEE Region 10<span>ieeer10.org</span></a>
+    <a class="portal ext" href="https://sac.ieeer10.org/" target="_blank" rel="noopener">R10 Student Activities<span>sac.ieeer10.org</span></a>
+    <a class="portal ext" href="https://www.computer.org" target="_blank" rel="noopener">IEEE Computer Society<span>computer.org</span></a>
+    <a class="portal ext" href="https://wie.ieee.org" target="_blank" rel="noopener">IEEE WIE<span>wie.ieee.org</span></a>
+    <a class="portal ext" href="https://epics.ieee.org" target="_blank" rel="noopener">EPICS in IEEE<span>epics.ieee.org</span></a>
+    <a class="portal ext" href="https://sight.ieee.org" target="_blank" rel="noopener">IEEE SIGHT<span>sight.ieee.org</span></a>
+    <a class="portal ext" href="https://yp.ieee.org" target="_blank" rel="noopener">IEEE Young Professionals<span>yp.ieee.org</span></a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="cols">
+    <div>
+      <h4>Opportunity Atlas</h4>
+      <p style="margin:0">A guide for SUAS IEEE Student Branch members and chapters (CS, WIE, AI/ML).</p>
+      <div class="author">
+        <div class="av">YU</div>
+        <div><b>Yash Upadhyay</b>Chair, SUAS IEEE Student Branch<br>
+          <a class="li" href="https://www.linkedin.com/in/yashupadhyay-yashord" target="_blank" rel="noopener">in&nbsp; Connect on LinkedIn</a></div>
+      </div>
+    </div>
+    <div>
+      <h4>Sources</h4>
+      <div class="src">
+        <a class="ext" href="https://epics.ieee.org/getting-started/" target="_blank" rel="noopener">EPICS in IEEE</a>
+        <a class="ext" href="https://epics.ieee.org/resources/epics-in-ieee-travel-grant-program/" target="_blank" rel="noopener">EPICS travel grants</a>
+        <a class="ext" href="https://epics.ieee.org/resources/program-differences-of-epics-in-ieee-and-sight/" target="_blank" rel="noopener">EPICS vs SIGHT</a>
+        <a class="ext" href="https://sight.ieee.org/2026/02/ieee-tech4good-now-accepting-project-proposals/" target="_blank" rel="noopener">IEEE Tech4Good 2026</a>
+        <a class="ext" href="https://www.comsoc.org/about/news/shape-future-engineering-2027-tryengineering-stem-grants-now-open" target="_blank" rel="noopener">TryEngineering 2027 call (ComSoc)</a>
+        <a class="ext" href="https://tryengineering.org/news/announcement-tryengineering-stem-grant-recipients-2026/" target="_blank" rel="noopener">TryEngineering 2026 recipients</a>
+        <a class="ext" href="https://students.ieee.org/?p=281" target="_blank" rel="noopener">SB officer duties & rebates</a>
+        <a class="ext" href="https://students.ieee.org/?p=251" target="_blank" rel="noopener">SB Annual Plan & allotment</a>
+        <a class="ext" href="https://enotice.vtools.ieee.org/public/161620" target="_blank" rel="noopener">Rebate rules (vTools notice)</a>
+        <a class="ext" href="https://students.ieee.org/student-opportunities/professional-awareness/" target="_blank" rel="noopener">SPAx</a>
+        <a class="ext" href="https://yp.ieee.org/yp-event-funding-v2/" target="_blank" rel="noopener">YP STEP funding</a>
+        <a class="ext" href="https://ea.ieeer10.org/?p=1167" target="_blank" rel="noopener">R10 EA grants</a>
+        <a class="ext" href="https://www.ieeer10.org/2026/02/06/call-for-proposal-ieee-region-10-student-summit-2026-north-asia/" target="_blank" rel="noopener">R10 Student Summit</a>
+        <a class="ext" href="https://www.computer.org/communities/professional-chapters/resources/funding" target="_blank" rel="noopener">IEEE CS funding</a>
+        <a class="ext" href="https://www.computer.org/communities/professional-chapters/distinguished-visitors-program" target="_blank" rel="noopener">CS DVP</a>
+        <a class="ext" href="https://wie.ieee.org/affinity-groups/form-manage/" target="_blank" rel="noopener">WIE funding</a>
+        <a class="ext" href="https://wie.ieeer10.org/?p=3611" target="_blank" rel="noopener">R10 WIE fund</a>
+        <a class="ext" href="https://www.ieeesmc.org/chapters-communities/support-for-chapters/" target="_blank" rel="noopener">SMC chapter grants</a>
+        <a class="ext" href="https://entrepreneurship.ieee.org/local-groups/" target="_blank" rel="noopener">IEEE Entrepreneurship</a>
+        <a class="ext" href="https://www.ieeefoundation.org/harnessing-positive-energy-empower-a-billion-lives-competition/" target="_blank" rel="noopener">Empower a Billion Lives (IEEE Foundation)</a>
+        <a class="ext" href="https://nidhi-prayas.org" target="_blank" rel="noopener">DST NIDHI-PRAYAS</a>
+        <a class="ext" href="https://sih.gov.in" target="_blank" rel="noopener">Smart India Hackathon</a>
+        <a class="ext" href="https://ieeextreme.org/" target="_blank" rel="noopener">IEEEXtreme</a>
+        <a class="ext" href="https://ieeeindiacouncil.org/2020-ieee-india-council-awards/" target="_blank" rel="noopener">India Council awards</a>
+      </div>
+    </div>
+  </div>
+  <div class="fine">Researched from official IEEE and Government of India pages · last checked 13 Nov 2026. Amounts and dates change every cycle, so always confirm on the official page before applying. This is a student-made guide for SUAS IEEE SB members, not an official IEEE publication.</div>
+</div></footer>
+
+<a href="#top" class="totop" id="totop" aria-label="Back to top">↑</a>
+
+<script>
+(function(){
+  // countdown — TryEngineering closes 30 Nov 2026 23:59 ET (≈ 1 Dec 04:59 UTC)
+  var end=Date.UTC(2026,11,1,4,59), d=Math.ceil((end-Date.now())/864e5), el=document.getElementById('days');
+  el.textContent=Math.max(d,0); if(d<0) document.getElementById('now').style.opacity=.55;
+
+  // timeline: fade past, highlight next 45 days
+  var now=Date.now();
+  document.querySelectorAll('.tl').forEach(function(t){
+    var dt=new Date(t.dataset.date).getTime();
+    if(dt<now) t.classList.add('past'); else if(dt-now<45*864e5) t.classList.add('soon');
+  });
+
+  // filter + search
+  var f='all', q='';
+  var cards=[].slice.call(document.querySelectorAll('#cards .card'));
+  function apply(){
+    var shown=0;
+    cards.forEach(function(c){
+      var okF=f==='all'||c.dataset.tags.split(' ').indexOf(f)>-1;
+      var okQ=!q||c.textContent.toLowerCase().indexOf(q)>-1;
+      var on=okF&&okQ; c.classList.toggle('hidden',!on); if(on) shown++;
+    });
+    document.querySelectorAll('#cards .group-title').forEach(function(h){
+      var grid=h.nextElementSibling;
+      var any=[].some.call(grid.children,function(c){return !c.classList.contains('hidden')});
+      h.classList.toggle('hidden',!any); grid.classList.toggle('hidden',!any);
+    });
+    document.getElementById('empty').style.display=shown?'none':'block';
+    document.getElementById('count').textContent=shown+' of '+cards.length+' opportunities';
+  }
+  document.querySelectorAll('#filters button').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('#filters button').forEach(function(x){x.classList.remove('on')});
+      b.classList.add('on'); f=b.dataset.f; apply();
+    });
+  });
+  document.getElementById('q').addEventListener('input',function(e){q=e.target.value.trim().toLowerCase();apply();});
+  apply();
+
+  // active nav + back-to-top
+  var links=[].slice.call(document.querySelectorAll('#toc a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))}).filter(Boolean);
+  var top=document.getElementById('totop');
+  function onScroll(){
+    var y=window.scrollY+90, cur=null;
+    secs.forEach(function(s){ if(s.offsetTop<=y) cur=s.id; });
+    links.forEach(function(a){
+      var on=a.getAttribute('href')==='#'+cur; a.classList.toggle('active',on);
+      if(on && a.scrollIntoView && a.parentNode.scrollWidth>a.parentNode.clientWidth){
+        var p=a.parentNode; p.scrollLeft=a.offsetLeft-p.clientWidth/2+a.clientWidth/2;
+      }
+    });
+    top.classList.toggle('show',window.scrollY>700);
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+})();
+</script>
+</body>
+</html>
